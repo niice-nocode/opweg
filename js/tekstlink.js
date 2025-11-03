@@ -15,10 +15,8 @@ function initDrawRandomUnderline() {
   function decorateSVG(svgEl) {
     svgEl.setAttribute('class', 'text-draw__box-svg');
     svgEl.setAttribute('preserveAspectRatio', 'none');
-    svgEl.style.width = '';
-    svgEl.style.height = '';
-    svgEl.width = '';
-    svgEl.height = '';
+    svgEl.style.width = '100%';
+    svgEl.style.height = 'auto';
     svgEl.style.display = 'block';
     svgEl.querySelectorAll('path').forEach(path => {
       path.setAttribute('stroke', 'currentColor');
