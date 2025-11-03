@@ -42,6 +42,10 @@ function initDrawRandomUnderline() {
         nextIndex = Math.floor(Math.random() * svgVariants.length);
       }
 
+      // Set box width to match container
+      const containerWidth = container.offsetWidth;
+      box.style.width = containerWidth + 'px';
+
       // Animate Draw
       box.innerHTML = svgVariants[nextIndex];
       const svg = box.querySelector('svg');
