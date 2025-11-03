@@ -17,6 +17,8 @@ function initDrawRandomUnderline() {
     svgEl.setAttribute('preserveAspectRatio', 'none');
     svgEl.style.width = '';
     svgEl.style.height = '';
+    svgEl.width = '';
+    svgEl.height = '';
     svgEl.style.display = 'block';
     svgEl.querySelectorAll('path').forEach(path => {
       path.setAttribute('stroke', 'currentColor');
