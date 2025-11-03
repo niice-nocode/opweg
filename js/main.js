@@ -1,0 +1,10 @@
+import './detect-scroll.js';
+import './form-validation.js';
+import './lenis-smoothscroll.js';
+import './update-year.js';
+import './accessability.js';
+import './gsap-heading.js';
+import './scroll-video.js';
+import './tekstlink.js';
+import './hamburger-nav.js';
+import './transition-background.js';
