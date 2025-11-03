@@ -1,0 +1,57 @@
+
+/* Text Size Adjustments */
+
+body.text-size-medium .text-size-regular {
+  font-size: 125%; /* 1.125x larger */
+}
+
+body.text-size-medium .text-size-medium {
+  font-size: 135%; /* 1.125x larger */
+}
+
+body.text-size-medium .text-size-large {
+  font-size: 145%; /* 1.125x larger */
+}
+
+body.text-size-large .text-size-regular {
+  font-size: 155%; /* 1.25x larger */
+}
+
+body.text-size-large .text-size-medium {
+  font-size: 175%; /* 1.25x larger */
+}
+
+body.text-size-large .text-size-large {
+  font-size: 200%; /* 1.25x larger */
+}
+
+/* Base state for buttons */
+.accessibility_size-option {
+  cursor: pointer;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Hover state */
+.accessibility_size-option:hover {
+  background-color: #FEFFEC;
+  color: #006935;
+}
+
+/* Target child elements on hover */
+.accessibility_size-option:hover * {
+  color: #006935 !important;
+  transition: color 0.4s ease;
+}
+
+/* Active state for buttons */
+.accessibility_size-option.is--active {
+  background-color: #FEFFEC;
+  color: #006935;
+  font-weight: 600;
+}
+
+/* Target child elements when active */
+.accessibility_size-option.is--active * {
+  color: #006935 !important;
+  transition: color 0.4s ease;
+}

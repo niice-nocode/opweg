@@ -1,0 +1,25 @@
+.nav {
+  transition: transform 1s ease, padding 1s ease;
+  transform: translateY(0%) rotate(0.001deg);
+  padding: 2em 1em;
+}
+
+/* Shrink nav when scrolling started */
+[data-scrolling-started="true"] .nav {
+  padding: 1em 1em;
+}
+
+/* Move nav out of window when scrolling down */
+[data-scrolling-started="true"][data-scrolling-direction="down"] .nav {
+  transform: translateY(-100%) rotate(0.001deg);
+}
+
+/* Change background to filled when scrolling started */
+.nav__inner {
+  transition: background-color 1s ease;
+  background-color: transparent;
+}
+
+[data-scrolling-started="true"] .nav__inner {
+  background-color: #fff;
+}
