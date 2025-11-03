@@ -1,3 +1,5 @@
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
 document.addEventListener("DOMContentLoaded", () => {
 
   let headings = document.querySelectorAll('[data-split="heading"]')
