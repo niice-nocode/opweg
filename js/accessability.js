@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const sizeOptions = document.querySelectorAll('.accessibility_size-option');
   
   // Check for saved preference
-  const savedSize = localStorage.getItem('textSize') || 'text-size-regular';
+  const savedSize = localStorage.getItem('textSize') || 'accessibility-text-regular';
   body.classList.add(savedSize);
   updateActiveState(savedSize);
   
@@ -16,21 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
       const isLarge = this.classList.contains('is--large');
       
       // Remove all text size classes
-      body.classList.remove('text-size-regular', 'text-size-medium', 'text-size-large');
+      body.classList.remove('accessibility-text-regular', 'accessibility-text-medium', 'accessibility-text-large');
       
       // Add the selected class
       if (isRegular) {
-        body.classList.add('text-size-regular');
-        localStorage.setItem('textSize', 'text-size-regular');
-        updateActiveState('text-size-regular');
+        body.classList.add('accessibility-text-regular');
+        localStorage.setItem('textSize', 'accessibility-text-regular');
+        updateActiveState('accessibility-text-regular');
       } else if (isMedium) {
-        body.classList.add('text-size-medium');
-        localStorage.setItem('textSize', 'text-size-medium');
-        updateActiveState('text-size-medium');
+        body.classList.add('accessibility-text-medium');
+        localStorage.setItem('textSize', 'accessibility-text-medium');
+        updateActiveState('accessibility-text-medium');
       } else if (isLarge) {
-        body.classList.add('text-size-large');
-        localStorage.setItem('textSize', 'text-size-large');
-        updateActiveState('text-size-large');
+        body.classList.add('accessibility-text-large');
+        localStorage.setItem('textSize', 'accessibility-text-large');
+        updateActiveState('accessibility-text-large');
       }
     });
     
@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
       option.classList.remove('is--active');
       
       if (
-        (activeSize === 'text-size-regular' && option.classList.contains('is--regular')) ||
-        (activeSize === 'text-size-medium' && option.classList.contains('is--medium')) ||
-        (activeSize === 'text-size-large' && option.classList.contains('is--large'))
+        (activeSize === 'accessibility-text-regular' && option.classList.contains('is--regular')) ||
+        (activeSize === 'accessibility-text-medium' && option.classList.contains('is--medium')) ||
+        (activeSize === 'accessibility-text-large' && option.classList.contains('is--large'))
       ) {
         option.classList.add('is--active');
       }

@@ -45,5 +45,5 @@
 }
 
 .btn[data-theme="primary"] .btn__circle {
-  background-color: #rgba(254, 255, 236, 0.2);
+  background-color: rgba(254, 255, 236, 0.2);
 }
