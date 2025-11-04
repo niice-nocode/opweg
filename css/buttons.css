@@ -6,7 +6,7 @@
 .btn .btn__circle {
   transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1), background-color 0.4s cubic-bezier(0.625, 0.05, 0, 1);
   transform: translate(-50%, -50%) scale(0) rotate(0.001deg);
-  background-color: #ee4f9c;
+  background-color: rgba(254, 255, 236, 0.2);
 }
 
 .btn:hover .btn__circle {
@@ -32,7 +32,7 @@
 }
 
 .btn[data-theme="light"] .btn__circle {
-  background-color: #76f3a9;
+  background-color: rgba(254, 255, 236, 0.2);
 }
 
 /* Primary */
@@ -45,5 +45,5 @@
 }
 
 .btn[data-theme="primary"] .btn__circle {
-  background-color: #1F7A44;
+  background-color: #rgba(254, 255, 236, 0.2);
 }
