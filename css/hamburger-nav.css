@@ -2,96 +2,102 @@
 .navigation__dark-bg {
   transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
 }
-
 [data-navigation-status="active"] .navigation__dark-bg {
-  opacity: 0.33;
+  opacity: 0.15;
   visibility: visible;
 }
 
-/* Nav Group BG  */
-.hamburger-nav__bg {
-  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+/* Show/Hide content */
+.centered-nav__content {
+  transition: grid-template-rows 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+}
+[data-navigation-status="active"] .centered-nav__content {
+  grid-template-rows: 1fr;
 }
 
-[data-navigation-status="active"] .hamburger-nav__bg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Nav Group  */
-.hamburger-nav__group {
-  transition: all 0.5s cubic-bezier(0.5, 0.5, 0, 1), transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  transform: scale(0.15) rotate(0.001deg);
+/* Nav content animation (menu items) */
+[data-navigation-item] {
+  transition: all 0.6s cubic-bezier(0.625, 0.05, 0, 1);
   opacity: 0;
-  visibility: hidden;
+  transform: translate(0px, 2em);
 }
-
-[data-navigation-status="active"] .hamburger-nav__group {
-  transform: scale(1) rotate(0.001deg);
+[data-navigation-status="active"] [data-navigation-item] {
   opacity: 1;
-  visibility: visible;
+  transform: translate(0px, 0em);
 }
 
-/* Active Link  */
-
-.hamburger-nav__a[aria-current] .hamburger-nav__p {
-  opacity: 0.33;
+/* Link underline */
+.hamburger-nav__a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.2;
+  transition-delay: inherit;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(.65, 0, 0, 1);
+}
+[data-navigation-status="active"] .hamburger-nav__a::after {
+  transform: scaleX(1);
+}
+.hamburger-nav__a:hover::after {
+  opacity: 0.4;
 }
 
-/* Active Indicator  */
-
-.hamburger-nav__dot {
-  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  transform: scale(0) rotate(0.001deg);
-  opacity: 0.5;
+/* Link text slide */
+.hamburger-nav__p {
+  transition: transform 0.6s cubic-bezier(.65, 0, 0, 1);
+  transform: translate(0px, 150%);
+  transition-delay: inherit;
+}
+[data-navigation-status="active"] .hamburger-nav__p {
+  transform: translate(0px, 0%);
 }
 
-.hamburger-nav__a[aria-current] .hamburger-nav__dot {
-  transform: scale(1) rotate(0.001deg);
+/* Active Link underline */
+.hamburger-nav__a[aria-current]::after {
   opacity: 1;
 }
 
-.hamburger-nav:has(.hamburger-nav__a:hover) .hamburger-nav__dot {
-  transform: scale(0) rotate(0.001deg);
+/* Hamburger Button animation */
+.centered-nav__toggle .centered-nav__toggle-bar {
+  transition: transform 0.6s cubic-bezier(.65, 0, 0, 1);
+  transform: translateY(-0.25em) rotate(0.001deg);
 }
-
-.hamburger-nav .hamburger-nav__a:hover .hamburger-nav__dot {
-  transform: scale(1) rotate(0.001deg);
-  opacity: 0.25;
+.centered-nav__toggle:hover .centered-nav__toggle-bar {
+  transform: translateY(0.25em) rotate(0.001deg);
 }
-
-/* Hamburger Button  */
-.hamburger-nav__toggle {
-  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  transform: translate(0em, 0em) rotate(0.001deg);
-}
-
-[data-navigation-status="active"] .hamburger-nav__toggle {
-  transform: translate(-1em, 1em) rotate(0.001deg);
-}
-
-.hamburger-nav__toggle .hamburger-nav__toggle-bar {
-  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  transform: translateY(-0.15em) rotate(0.001deg);
-}
-
-.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar {
+.centered-nav__toggle .centered-nav__toggle-bar:nth-child(2) {
   transform: translateY(0.15em) rotate(0.001deg);
 }
-
-[data-navigation-status="active"] .hamburger-nav__toggle .hamburger-nav__toggle-bar {
+.centered-nav__toggle:hover .centered-nav__toggle-bar:nth-child(2) {
+  transform: translateY(-0.15em) rotate(0.001deg);
+}
+[data-navigation-status="active"] .centered-nav__toggle .centered-nav__toggle-bar {
   transform: translateY(0em) rotate(45deg);
 }
-
-.hamburger-nav__toggle .hamburger-nav__toggle-bar:nth-child(2) {
-  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  transform: translateY(0.15em) rotate(0.001deg);
-}
-
-.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar:nth-child(2) {
-  transform: translateY(-0.15em) rotate(0.001deg);
-}
-
-[data-navigation-status="active"] .hamburger-nav__toggle .hamburger-nav__toggle-bar:nth-child(2) {
+[data-navigation-status="active"] .centered-nav__toggle .centered-nav__toggle-bar:nth-child(2) {
   transform: translateY(0em) rotate(-45deg);
+}
+
+/* CTA Banner marquee */
+@keyframes translateX {
+  to {
+    transform: translateX(-100%);
+  }
+}
+[data-css-marquee-list] {
+  animation: translateX 20s linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+[data-navigation-status="active"] [data-css-marquee-list] {
+  animation-play-state: running;
+}
+[data-navigation-status="active"] .centered-nav__banner:hover [data-css-marquee-list] {
+  animation-play-state: paused;
 }

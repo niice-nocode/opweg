@@ -1,4 +1,11 @@
-function initScalingHamburgerNavigation() {
+function initCenteredScalingNavigationBar() {
+  const navigationInnerItems = document.querySelectorAll("[data-navigation-item]")
+  
+  // Apply CSS transition delay
+  navigationInnerItems.forEach((item, index)=> {
+      item.style.transitionDelay = `${index * 0.05}s`;
+  });
+  
   // Toggle Navigation
   document.querySelectorAll('[data-navigation-toggle="toggle"]').forEach(toggleBtn => {
     toggleBtn.addEventListener('click', () => {
@@ -37,7 +44,7 @@ function initScalingHamburgerNavigation() {
   });
 }
 
-// Initialize Scaling Hamburger Navigation
+// Initialize Centered Scaling Navigation Bar
 document.addEventListener('DOMContentLoaded', function() {
-  initScalingHamburgerNavigation();
+  initCenteredScalingNavigationBar();
 });
