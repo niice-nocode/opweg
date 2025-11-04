@@ -34,3 +34,16 @@
 .btn[data-theme="light"] .btn__circle {
   background-color: #76f3a9;
 }
+
+/* Primary */
+.btn[data-theme="primary"] .btn__bg {
+  background-color: #006935;
+}
+
+.btn[data-theme="primary"] .btn__text {
+  color: #FEFFEC;
+}
+
+.btn[data-theme="primary"] .btn__circle {
+  background-color: #1F7A44;
+}
