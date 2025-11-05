@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function changeBackground(color) {
     gsap.to('body', {
       backgroundColor: color,
-      duration: 0.6,
+      duration: 0.4,
       ease: 'power2.out'
     });
   }

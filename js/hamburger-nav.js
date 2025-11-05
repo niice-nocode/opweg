@@ -48,3 +48,36 @@ function initCenteredScalingNavigationBar() {
 document.addEventListener('DOMContentLoaded', function() {
   initCenteredScalingNavigationBar();
 });
+
+
+// Get your navigation element
+const navigation = document.querySelector('[data-navigation-status]');
+
+if (navigation) {
+  // Function to toggle body scroll
+  const toggleBodyScroll = (status) => {
+    if (status === 'active') {
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+    }
+  };
+
+  // Set initial state
+  toggleBodyScroll(navigation.getAttribute('data-navigation-status'));
+
+  // Watch for attribute changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-navigation-status') {
+        const status = navigation.getAttribute('data-navigation-status');
+        toggleBodyScroll(status);
+      }
+    });
+  });
+
+  // Start observing
+  observer.observe(navigation, { attributes: true });
+}
