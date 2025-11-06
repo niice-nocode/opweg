@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add more color mappings as needed
   };
   
+  // Track current background color to prevent unnecessary animations
+  let currentBackgroundColor = null;
+  
   // Find all elements with the background-color-theme attribute
   const sections = document.querySelectorAll('[background-color-theme]');
   
@@ -26,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (bgColor) {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 20%', // When section hits middle of viewport
+        start: 'top 20%',
         end: 'bottom 20%',
         onEnter: () => changeBackground(bgColor),
         onEnterBack: () => changeBackground(bgColor),
@@ -36,12 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Function to change background with GSAP animation
+  // Only animates if the color is different from current
   function changeBackground(color) {
-    gsap.to('body', {
-      backgroundColor: color,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
+    // Check if the color is actually different
+    if (color !== currentBackgroundColor) {
+      gsap.to('body', {
+        backgroundColor: color,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+      // Update the current color tracker
+      currentBackgroundColor = color;
+    }
   }
   
   // Set initial background color from first section
@@ -51,6 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const firstColor = colorMap[firstTheme];
     if (firstColor) {
       gsap.set('body', { backgroundColor: firstColor });
+      // Initialize the current color tracker
+      currentBackgroundColor = firstColor;
     }
   }
 });
