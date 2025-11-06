@@ -1,0 +1,69 @@
+/* Initial state for dropdown list */
+.dropdown_list {
+  clip-path: inset(0 0 100% 0);
+  transition: none;
+}
+
+/* Animated state when open */
+.dropdown_list.w--open {
+  animation: slideDown 0.525s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Slide down animation with mask effect */
+@keyframes slideDown {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Initial state for dropdown links */
+.dropdown_list.w--open .dropdown-link {
+  opacity: 0;
+  animation: fadeIn 0.325s ease forwards;
+}
+
+/* Stagger the links animation */
+.dropdown_list.w--open .dropdown-link:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.dropdown_list.w--open .dropdown-link:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.dropdown_list.w--open .dropdown-link:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.dropdown_list.w--open .dropdown-link:nth-child(4) {
+  animation-delay: 0.35s;
+}
+
+.dropdown_list.w--open .dropdown-link:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Add more nth-child selectors if you have more links */
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Dropdown icon rotation */
+.dropdown_icon {
+  transition: transform 0.525s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: rotate(0deg);
+}
+
+.w--open .dropdown_icon {
+  transform: rotate(-180deg);
+}
