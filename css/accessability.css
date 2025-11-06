@@ -1,18 +1,18 @@
 
-/* Text Size Adjustments - Using unique class names */
-body.accessibility-text-regular {
-  font-size: 100%;
+/* Text Size Accessibility - Scale everything proportionally */
+html.accessibility-text-regular {
+  font-size: 100%; /* Normal state - 16px base */
 }
 
-body.accessibility-text-medium {
-  font-size: 112.5%; /* 1.125x larger */
+html.accessibility-text-medium {
+  font-size: 112.5%; /* 1.125x larger - 18px base */
 }
 
-body.accessibility-text-large {
-  font-size: 125%; /* 1.25x larger */
+html.accessibility-text-large {
+  font-size: 125%; /* 1.25x larger - 20px base */
 }
 
-/* Active state for buttons */
+/* Active state for accessibility buttons */
 .accessibility_size-option {
   cursor: pointer;
   transition: background-color 0.4s ease, color 0.4s ease;

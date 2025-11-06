@@ -1,11 +1,11 @@
 // Text Size Accessibility Controls
 document.addEventListener('DOMContentLoaded', function() {
-  const body = document.body;
+  const html = document.documentElement; // Target HTML element instead of body
   const sizeOptions = document.querySelectorAll('.accessibility_size-option');
   
   // Check for saved preference
   const savedSize = localStorage.getItem('textSize') || 'accessibility-text-regular';
-  body.classList.add(savedSize);
+  html.classList.add(savedSize);
   updateActiveState(savedSize);
   
   // Add click handlers
@@ -16,19 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
       const isLarge = this.classList.contains('is--large');
       
       // Remove all text size classes
-      body.classList.remove('accessibility-text-regular', 'accessibility-text-medium', 'accessibility-text-large');
+      html.classList.remove('accessibility-text-regular', 'accessibility-text-medium', 'accessibility-text-large');
       
       // Add the selected class
       if (isRegular) {
-        body.classList.add('accessibility-text-regular');
+        html.classList.add('accessibility-text-regular');
         localStorage.setItem('textSize', 'accessibility-text-regular');
         updateActiveState('accessibility-text-regular');
       } else if (isMedium) {
-        body.classList.add('accessibility-text-medium');
+        html.classList.add('accessibility-text-medium');
         localStorage.setItem('textSize', 'accessibility-text-medium');
         updateActiveState('accessibility-text-medium');
       } else if (isLarge) {
-        body.classList.add('accessibility-text-large');
+        html.classList.add('accessibility-text-large');
         localStorage.setItem('textSize', 'accessibility-text-large');
         updateActiveState('accessibility-text-large');
       }
