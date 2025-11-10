@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (bgColor) {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 50%', // When section hits middle of viewport
-        end: 'bottom 50%',
+        start: 'top 10px', // When section hits middle of viewport
+        end: 'bottom 10px',
         onEnter: () => changeBackground(bgColor, themeValue),
         onEnterBack: () => changeBackground(bgColor, themeValue),
         // markers: true // Uncomment to see trigger points (debug mode)
