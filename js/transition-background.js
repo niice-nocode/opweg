@@ -17,14 +17,32 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (sections.length === 0) return;
   
-  // Set initial background color from first section
-  const firstSection = sections[0];
-  if (firstSection) {
-    const firstTheme = firstSection.getAttribute('background-color-theme');
-    const firstColor = colorMap[firstTheme];
-    if (firstColor) {
-      gsap.set('body', { backgroundColor: firstColor });
-      activeTheme = firstTheme;
+  // Function to get the section currently in viewport center
+  function getCurrentSection() {
+    const viewportCenter = window.scrollY + (window.innerHeight / 2);
+    
+    for (let section of sections) {
+      const rect = section.getBoundingClientRect();
+      const sectionTop = window.scrollY + rect.top;
+      const sectionBottom = sectionTop + rect.height;
+      
+      if (viewportCenter >= sectionTop && viewportCenter <= sectionBottom) {
+        return section;
+      }
+    }
+    
+    // Fallback to first section if none found
+    return sections[0];
+  }
+  
+  // Set initial background color based on current viewport position
+  const currentSection = getCurrentSection();
+  if (currentSection) {
+    const currentTheme = currentSection.getAttribute('background-color-theme');
+    const currentColor = colorMap[currentTheme];
+    if (currentColor) {
+      gsap.set('body', { backgroundColor: currentColor });
+      activeTheme = currentTheme;
     }
   }
   
