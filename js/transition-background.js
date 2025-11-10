@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeValue = section.getAttribute('background-color-theme');
     const bgColor = colorMap[themeValue];
 
-    console.log('activeTheme:', activeTheme, ' | section themeValue:', themeValue);
     
     if (bgColor) {
       ScrollTrigger.create({
@@ -39,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to change background with GSAP animation
   function changeBackground(color, theme, activeTheme) {
-      
+          console.log('activeTheme:', activeTheme, ' | section themeValue:', themeValue);
+
     if (activeTheme !== theme) {
       gsap.to('body', {
         backgroundColor: color,
