@@ -54,10 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
         duration: 0.3,
         ease: 'power2.out'
       });
+
+      // Always update current theme (even if we didn't animate)
+      currentTheme = theme;
     }
     
-    // Always update current theme (even if we didn't animate)
-    currentTheme = theme;
   }
   
   // Set initial background color from first section
