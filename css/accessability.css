@@ -1,22 +1,31 @@
 
-/* Text Size Accessibility - Scale everything proportionally */
-html.accessibility-text-regular .text-size-large,
-html.accessibility-text-regular .text-size-medium,
-html.accessibility-text-regular .text-size-regular {
-  font-size: 100%; /* Normal state - 16px base */
-}
 
-html.accessibility-text-medium .text-size-large,
-html.accessibility-text-medium .text-size-medium,
+
+
 html.accessibility-text-medium .text-size-regular {
-  font-size: 112.5%; /* 1.125x larger - 18px base */
+    font-size: 115%; /* 1.25x larger - 20px base */
 }
 
-html.accessibility-text-large .text-size-large,
-html.accessibility-text-large .text-size-medium,
-html.accessibility-text-large .text-size-regular{
-  font-size: 125%; /* 1.25x larger - 20px base */
+html.accessibility-medium-large .text-size-medium {
+  font-size: 120%; /* 1.25x larger - 20px base */
 }
+
+html.accessibility-medium-large .text-size-large {
+  font-size: 130%; /* 1.25x larger - 20px base */
+}
+
+html.accessibility-text-large .text-size-regular {
+    font-size: 125%; /* 1.25x larger - 20px base */
+}
+
+html.accessibility-text-large .text-size-medium {
+  font-size: 130%; /* 1.25x larger - 20px base */
+}
+
+html.accessibility-text-large .text-size-large {
+  font-size: 135%; /* 1.25x larger - 20px base */
+}
+
 
 /* Active state for accessibility buttons */
 .accessibility_size-option {
