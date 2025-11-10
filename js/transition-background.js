@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   
   let activeTheme = null;
+  let isAnimating = false;
 
   // Find all elements with the background-color-theme attribute
   const sections = document.querySelectorAll('[background-color-theme]');
@@ -31,30 +32,37 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    // Fallback to first section if none found
-    return sections[0];
+    // Fallback to first section if at top, last if at bottom
+    if (window.scrollY < sections[0].offsetTop) {
+      return sections[0];
+    }
+    return sections[sections.length - 1];
   }
   
-  // Set initial background color based on current viewport position
-  const currentSection = getCurrentSection();
-  if (currentSection) {
-    const currentTheme = currentSection.getAttribute('background-color-theme');
-    const currentColor = colorMap[currentTheme];
-    if (currentColor) {
-      gsap.set('body', { backgroundColor: currentColor });
-      activeTheme = currentTheme;
+  // Function to check and update background based on current position
+  function checkAndUpdateBackground() {
+    if (isAnimating) return;
+    
+    const currentSection = getCurrentSection();
+    if (currentSection) {
+      const currentTheme = currentSection.getAttribute('background-color-theme');
+      const currentColor = colorMap[currentTheme];
+      
+      if (currentColor && activeTheme !== currentTheme) {
+        changeBackground(currentColor, currentTheme);
+      }
     }
   }
   
-  // Apply ScrollTrigger only to sections where theme changes
+  // Set initial background color
+  checkAndUpdateBackground();
+  
+  // Apply ScrollTrigger to sections where theme changes
   sections.forEach((section, index) => {
     const themeValue = section.getAttribute('background-color-theme');
     const bgColor = colorMap[themeValue];
-    
-    // Get previous section's theme
     const prevTheme = index > 0 ? sections[index - 1].getAttribute('background-color-theme') : null;
     
-    // Only create ScrollTrigger if theme is different from previous section
     if (bgColor && themeValue !== prevTheme) {
       ScrollTrigger.create({
         trigger: section,
@@ -62,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         end: 'bottom 25%',
         onEnter: () => changeBackground(bgColor, themeValue),
         onEnterBack: () => changeBackground(bgColor, themeValue),
-        // markers: true // Uncomment to see trigger points (debug mode)
+        // markers: true
       });
     }
   });
@@ -70,14 +78,50 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to change background with GSAP animation
   function changeBackground(color, theme) {
     if (activeTheme !== theme) {
+      isAnimating = true;
       gsap.to('body', {
         backgroundColor: color,
         duration: 0.4,
         ease: 'power2.out',
         onComplete: () => {
           activeTheme = theme;
+          isAnimating = false;
         }
       });
     }
   }
+  
+  // Debounce helper
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  // Listen to scroll events for instant scrolls (like "back to top" buttons)
+  let lastScrollY = window.scrollY;
+  const debouncedCheck = debounce(checkAndUpdateBackground, 100);
+  
+  window.addEventListener('scroll', function() {
+    const currentScrollY = window.scrollY;
+    const scrollDiff = Math.abs(currentScrollY - lastScrollY);
+    
+    // If scroll difference is large (instant scroll), check immediately
+    if (scrollDiff > window.innerHeight) {
+      ScrollTrigger.refresh();
+      setTimeout(checkAndUpdateBackground, 50);
+    }
+    
+    lastScrollY = currentScrollY;
+    debouncedCheck();
+  });
+  
+  // Also check on scroll end
+  ScrollTrigger.addEventListener('scrollEnd', checkAndUpdateBackground);
 });
