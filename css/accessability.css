@@ -1,14 +1,14 @@
 
 /* Text Size Accessibility - Scale everything proportionally */
-html.accessibility-text-regular {
+html.accessibility-text-regular .text-size-large {
   font-size: 100%; /* Normal state - 16px base */
 }
 
-html.accessibility-text-medium {
+html.accessibility-text-medium .text-size-large {
   font-size: 112.5%; /* 1.125x larger - 18px base */
 }
 
-html.accessibility-text-large {
+html.accessibility-text-large .text-size-large{
   font-size: 125%; /* 1.25x larger - 20px base */
 }
 
