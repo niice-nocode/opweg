@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (bgColor && themeValue !== prevTheme) {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 32px',
-        end: 'bottom 32px',
+        start: 'top 25%',
+        end: 'bottom 25%',
         onEnter: () => changeBackground(bgColor, themeValue),
         onEnterBack: () => changeBackground(bgColor, themeValue),
         // markers: true // Uncomment to see trigger points (debug mode)
