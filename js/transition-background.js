@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const colorMap = {
     'dark': 'var(--background-color--dark)',
     'light': 'var(--background-color--light)',
-    'green': 'var(--background-color--green)',
-    'blue': 'var(--background-color--blue)',
     // Add more color mappings as needed
   };
   
@@ -53,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // Create new animation
       bgTween = gsap.to('body', {
         backgroundColor: color,
-        duration: 0.4,
+        duration: 0.3,
         ease: 'power2.out'
       });
-      
-      // Update current theme
-      currentTheme = theme;
     }
+    
+    // Always update current theme (even if we didn't animate)
+    currentTheme = theme;
   }
   
   // Set initial background color from first section
