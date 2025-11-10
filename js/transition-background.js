@@ -22,15 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
   sections.forEach((section) => {
     const themeValue = section.getAttribute('background-color-theme');
     const bgColor = colorMap[themeValue];
+            console.log('section before:', section)
 
     
     if (bgColor) {
+              console.log('section:', section)
+
       ScrollTrigger.create({
         trigger: section,
         start: 'top 10px', // When section hits middle of viewport
         end: 'bottom 10px',
         onEnter: () => changeBackground(bgColor, themeValue),
         onEnterBack: () => changeBackground(bgColor, themeValue),
+
         // markers: true // Uncomment to see trigger points (debug mode)
       });
     }
