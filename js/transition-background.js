@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const colorMap = {
     'dark': 'var(--background-color--dark)',
     'light': 'var(--background-color--light)',
-    // Add more color mappings as needed
   };
   
   let activeTheme = null;
@@ -18,46 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (sections.length === 0) return;
   
-  // Apply ScrollTrigger to each section
-  sections.forEach((section) => {
-    const themeValue = section.getAttribute('background-color-theme');
-    const bgColor = colorMap[themeValue];
-            console.log('section before:', section)
-
-    
-    if (bgColor) {
-              console.log('section:', section)
-
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 10px', // When section hits middle of viewport
-        end: 'bottom 10px',
-        onEnter: () => changeBackground(bgColor, themeValue),
-        onEnterBack: () => changeBackground(bgColor, themeValue),
-        markers: true // Uncomment to see trigger points (debug mode)
-      });
-    }
-  });
-  
-  // Function to change background with GSAP animation
-  function changeBackground(color, theme) {
-      console.log('activeTheme:', activeTheme, ' | section themeValue:', theme);
-
-    if (activeTheme !== theme) {
-      gsap.to('body', {
-        backgroundColor: color,
-        duration: 0.4,
-        ease: 'power2.out',
-        onComplete: () => {
-          activeTheme = theme;
-          console.log('Animation complete, activeTheme is now:', activeTheme);
-        }
-      });
-    } else {
-      return;
-    }
-  }
-  
   // Set initial background color from first section
   const firstSection = sections[0];
   if (firstSection) {
@@ -66,7 +25,41 @@ document.addEventListener('DOMContentLoaded', function() {
     if (firstColor) {
       gsap.set('body', { backgroundColor: firstColor });
       activeTheme = firstTheme;
-      console.log('Initial theme:', activeTheme);
+    }
+  }
+  
+  // Apply ScrollTrigger only to sections where theme changes
+  sections.forEach((section, index) => {
+    const themeValue = section.getAttribute('background-color-theme');
+    const bgColor = colorMap[themeValue];
+    
+    // Get previous section's theme
+    const prevTheme = index > 0 ? sections[index - 1].getAttribute('background-color-theme') : null;
+    
+    // Only create ScrollTrigger if theme is different from previous section
+    if (bgColor && themeValue !== prevTheme) {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        onEnter: () => changeBackground(bgColor, themeValue),
+        onEnterBack: () => changeBackground(bgColor, themeValue),
+        // markers: true // Uncomment to see trigger points (debug mode)
+      });
+    }
+  });
+  
+  // Function to change background with GSAP animation
+  function changeBackground(color, theme) {
+    if (activeTheme !== theme) {
+      gsap.to('body', {
+        backgroundColor: color,
+        duration: 0.4,
+        ease: 'power2.out',
+        onComplete: () => {
+          activeTheme = theme;
+        }
+      });
     }
   }
 });
