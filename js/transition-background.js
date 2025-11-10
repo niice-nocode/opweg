@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to change background with GSAP animation
   function changeBackground(color, theme, activeTheme) {
-          console.log('activeTheme:', activeTheme, ' | section themeValue:', themeValue);
+          console.log('activeTheme:', activeTheme, ' | section themeValue:', theme);
 
     if (activeTheme !== theme) {
       gsap.to('body', {
