@@ -25,32 +25,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('activeTheme:', activeTheme, ' | section themeValue:', themeValue);
     
-    if (bgColor && themeValue !== activeTheme) {
+    if (bgColor) {
       ScrollTrigger.create({
         trigger: section,
         start: 'top 20%', // When section hits middle of viewport
         end: 'bottom 20%',
-        onEnter: () => changeBackground(bgColor),
-        onEnterBack: () => changeBackground(bgColor),
+        onEnter: () => changeBackground(bgColor, themeValue, activeTheme),
+        onEnterBack: () => changeBackground(bgColor, themeValue, activeTheme),
         // markers: true // Uncomment to see trigger points (debug mode)
       });
     }
   });
   
   // Function to change background with GSAP animation
-  function changeBackground(color, theme) {
+  function changeBackground(color, theme, activeTheme) {
       
-    console.log('new theme:', theme);
-
-    gsap.to('body', {
-      backgroundColor: color,
-      duration: 0.3,
-      ease: 'power2.out',
-      onComplete: () => {
-        activeTheme = theme;
-        console.log('Animation complete, activeTheme is now:', activeTheme);
-      }
-    });
+    if (activeTheme !== theme) {
+      gsap.to('body', {
+        backgroundColor: color,
+        duration: 0.3,
+        ease: 'power2.out',
+        onComplete: () => {
+          activeTheme = theme;
+          console.log('Animation complete, activeTheme is now:', activeTheme);
+        }
+      });
+    }
   }
   
   // Set initial background color from first section
