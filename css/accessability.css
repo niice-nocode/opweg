@@ -3,15 +3,15 @@
 
 
 html.accessibility-text-medium .text-size-regular {
-    font-size: 135%; /* 1.25x larger - 20px base */
+    font-size: 150%; /* 1.25x larger - 20px base */
 }
 
 html.accessibility-text-medium .text-size-medium {
-  font-size: 145%; /* 1.25x larger - 20px base */
+  font-size: 160%; /* 1.25x larger - 20px base */
 }
 
 html.accessibility-text-medium .text-size-large {
-  font-size: 155%; /* 1.25x larger - 20px base */
+  font-size: 170%; /* 1.25x larger - 20px base */
 }
 
 html.accessibility-text-large .text-size-regular {
