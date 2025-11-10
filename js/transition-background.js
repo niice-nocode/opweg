@@ -34,15 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
         end: 'bottom 10px',
         onEnter: () => changeBackground(bgColor, themeValue),
         onEnterBack: () => changeBackground(bgColor, themeValue),
-
-        // markers: true // Uncomment to see trigger points (debug mode)
+        markers: true // Uncomment to see trigger points (debug mode)
       });
     }
   });
   
   // Function to change background with GSAP animation
   function changeBackground(color, theme) {
-          console.log('activeTheme:', activeTheme, ' | section themeValue:', theme);
+      console.log('activeTheme:', activeTheme, ' | section themeValue:', theme);
 
     if (activeTheme !== theme) {
       gsap.to('body', {
@@ -54,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log('Animation complete, activeTheme is now:', activeTheme);
         }
       });
+    } else {
+      return;
     }
   }
   
