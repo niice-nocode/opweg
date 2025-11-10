@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
         trigger: section,
         start: 'top 20%', // When section hits middle of viewport
         end: 'bottom 20%',
-        onEnter: () => changeBackground(bgColor, themeValue, activeTheme),
-        onEnterBack: () => changeBackground(bgColor, themeValue, activeTheme),
+        onEnter: () => changeBackground(bgColor, themeValue),
+        onEnterBack: () => changeBackground(bgColor, themeValue),
         // markers: true // Uncomment to see trigger points (debug mode)
       });
     }
   });
   
   // Function to change background with GSAP animation
-  function changeBackground(color, theme, activeTheme) {
+  function changeBackground(color, theme) {
           console.log('activeTheme:', activeTheme, ' | section themeValue:', theme);
 
     if (activeTheme !== theme) {
