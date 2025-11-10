@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (bgColor) {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 20%', // When section hits middle of viewport
-        end: 'bottom 20%',
+        start: 'top 50%', // When section hits middle of viewport
+        end: 'bottom 50%',
         onEnter: () => changeBackground(bgColor, themeValue),
         onEnterBack: () => changeBackground(bgColor, themeValue),
         // markers: true // Uncomment to see trigger points (debug mode)
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (activeTheme !== theme) {
       gsap.to('body', {
         backgroundColor: color,
-        duration: 0.3,
+        duration: 0.4,
         ease: 'power2.out',
         onComplete: () => {
           activeTheme = theme;
