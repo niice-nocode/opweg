@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add more color mappings as needed
   };
   
+  let activeTheme = null;
+
   // Find all elements with the background-color-theme attribute
   const sections = document.querySelectorAll('[background-color-theme]');
   
@@ -20,8 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
   sections.forEach((section) => {
     const themeValue = section.getAttribute('background-color-theme');
     const bgColor = colorMap[themeValue];
+
+    console.log('activeTheme:', activeTheme, ' | section themeValue:', themeValue);
     
-    if (bgColor) {
+    if (bgColor && themeValue !== activeTheme) {
       ScrollTrigger.create({
         trigger: section,
         start: 'top 20%', // When section hits middle of viewport
@@ -34,11 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Function to change background with GSAP animation
-  function changeBackground(color) {
+  function changeBackground(color, theme) {
+      
+    console.log('new theme:', theme);
+
     gsap.to('body', {
       backgroundColor: color,
       duration: 0.3,
-      ease: 'power2.out'
+      ease: 'power2.out',
+      onComplete: () => {
+        activeTheme = theme;
+        console.log('Animation complete, activeTheme is now:', activeTheme);
+      }
     });
   }
   
@@ -49,6 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const firstColor = colorMap[firstTheme];
     if (firstColor) {
       gsap.set('body', { backgroundColor: firstColor });
+      activeTheme = firstTheme;
+      console.log('Initial theme:', activeTheme);
     }
   }
 });
