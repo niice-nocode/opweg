@@ -4,18 +4,22 @@
 
 html.accessibility-text-medium .text-size-regular {
     font-size: 150%; /* 1.25x larger - 20px base */
+    line-height: 1.15;
 }
 
 html.accessibility-text-medium .text-size-medium {
   font-size: 160%; /* 1.25x larger - 20px base */
+  line-height: 1.15;
 }
 
 html.accessibility-text-medium .text-size-large {
   font-size: 170%; /* 1.25x larger - 20px base */
+  line-height: 1.15;
 }
 
 html.accessibility-text-medium p {
   font-size: 150%; /* 1.25x larger - 20px base */
+  line-height: 1.15;
 }
 
 html.accessibility-text-medium .link {
@@ -23,27 +27,31 @@ html.accessibility-text-medium .link {
 }
 
 html.accessibility-text-medium .text-draw__span {
-  font-size: 150%; /* 1.25x larger - 20px base */
+  font-size: 130%; /* 1.25x larger - 20px base */
 }
 
 html.accessibility-text-medium .btn-text-p {
-  font-size: 150%; /* 1.25x larger - 20px base */
+  font-size: 130%; /* 1.25x larger - 20px base */
 }
 
 html.accessibility-text-large .text-size-regular {
     font-size: 155%; /* 1.25x larger - 20px base */
+    line-height: 1.15;
 }
 
 html.accessibility-text-large .text-size-medium {
   font-size: 165%; /* 1.25x larger - 20px base */
+  line-height: 1.15;
 }
 
 html.accessibility-text-large .text-size-large {
   font-size: 175%; /* 1.25x larger - 20px base */
+  line-height: 1.15;
 }
 
 html.accessibility-text-large p {
     font-size: 155%; /* 1.25x larger - 20px base */
+    line-height: 1.15;
 }
 
 html.accessibility-text-large .link {
@@ -51,11 +59,11 @@ html.accessibility-text-large .link {
 }
 
 html.accessibility-text-large .text-draw__span {
-  font-size: 155%; /* 1.25x larger - 20px base */
+  font-size: 130%; /* 1.25x larger - 20px base */
 }
 
 html.accessibility-text-large .btn-text-p{
-  font-size: 155%; /* 1.25x larger - 20px base */
+  font-size: 130%; /* 1.25x larger - 20px base */
 }
 
 
