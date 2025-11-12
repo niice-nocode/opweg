@@ -18,6 +18,10 @@ html.accessibility-text-medium p {
   font-size: 150%; /* 1.25x larger - 20px base */
 }
 
+html.accessibility-text-medium .link {
+  font-size: 150%; /* 1.25x larger - 20px base */
+}
+
 html.accessibility-text-large .text-size-regular {
     font-size: 155%; /* 1.25x larger - 20px base */
 }
@@ -32,6 +36,10 @@ html.accessibility-text-large .text-size-large {
 
 html.accessibility-text-large p {
     font-size: 155%; /* 1.25x larger - 20px base */
+}
+
+html.accessibility-text-large .link {
+  font-size: 155%; /* 1.25x larger - 20px base */
 }
 
 
