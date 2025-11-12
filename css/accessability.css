@@ -22,6 +22,14 @@ html.accessibility-text-medium .link {
   font-size: 150%; /* 1.25x larger - 20px base */
 }
 
+html.accessibility-text-medium .text-draw__span {
+  font-size: 150%; /* 1.25x larger - 20px base */
+}
+
+html.accessibility-text-medium .btn-text-p {
+  font-size: 150%; /* 1.25x larger - 20px base */
+}
+
 html.accessibility-text-large .text-size-regular {
     font-size: 155%; /* 1.25x larger - 20px base */
 }
@@ -39,6 +47,14 @@ html.accessibility-text-large p {
 }
 
 html.accessibility-text-large .link {
+  font-size: 155%; /* 1.25x larger - 20px base */
+}
+
+html.accessibility-text-large .text-draw__span {
+  font-size: 155%; /* 1.25x larger - 20px base */
+}
+
+html.accessibility-text-large .btn-text-p{
   font-size: 155%; /* 1.25x larger - 20px base */
 }
 
