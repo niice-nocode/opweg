@@ -1,4 +1,41 @@
+html.accessibility-text-regular .text-size-regular {
+    font-size: 1rem; /* 1.25x larger - 20px base */
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
 
+html.accessibility-text-regular .text-size-medium {
+  font-size: 1.125rem; /* 1.25x larger - 20px base */
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+html.accessibility-text-regular .text-size-large {
+  font-size: 1.25rem; /* 1.25x larger - 20px base */
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+html.accessibility-text-regular p {
+  font-size: 1.25rem; /* 1.25x larger - 20px base */
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+html.accessibility-text-regular .link {
+  font-size: 1.25rem; /* 1.25x larger - 20px base */
+  letter-spacing: -0.5px;
+}
+
+html.accessibility-text-regular .text-draw__span {
+  font-size: 1.25rem; /* Normal size */
+  letter-spacing: -0.5px;
+}
+
+html.accessibility-text-regular .btn-text-p {
+  font-size: 1.25rem; /* Normal size */
+  letter-spacing: -0.5px;
+}
 
 
 
