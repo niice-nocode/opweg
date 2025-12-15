@@ -1,24 +1,24 @@
 html.accessibility-text-regular .text-size-regular {
     font-size: 1rem; /* 1.25x larger - 20px base */
-    line-height: 1.15;
+    line-height: 1.5;
     letter-spacing: -0.5px;
 }
 
 html.accessibility-text-regular .text-size-medium {
   font-size: 1.125rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
 html.accessibility-text-regular .text-size-large {
   font-size: 1.25rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
 html.accessibility-text-regular p {
   font-size: 1.25rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
@@ -41,25 +41,25 @@ html.accessibility-text-regular .btn-text-p {
 
 html.accessibility-text-medium .text-size-regular {
     font-size: 1.125rem; /* 1.25x larger - 20px base */
-    line-height: 1.15;
+    line-height: 1.5;
     letter-spacing: -0.5px;
 }
 
 html.accessibility-text-medium .text-size-medium {
   font-size: 1.25rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
 html.accessibility-text-medium .text-size-large {
   font-size: 1.35rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
 html.accessibility-text-medium p {
   font-size: 1.35rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
@@ -80,25 +80,25 @@ html.accessibility-text-medium .btn-text-p {
 
 html.accessibility-text-large .text-size-regular {
     font-size: 1.25rem; /* 1.25x larger - 20px base */
-    line-height: 1.15;
+    line-height: 1.5;
     letter-spacing: -0.5px;
 }
 
 html.accessibility-text-large .text-size-medium {
   font-size: 1.35rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
 html.accessibility-text-large .text-size-large {
   font-size: 1.50rem; /* 1.25x larger - 20px base */
-  line-height: 1.15;
+  line-height: 1.5;
   letter-spacing: -0.5px;
 }
 
 html.accessibility-text-large p {
     font-size: 1.50rem; /* 1.25x larger - 20px base */
-    line-height: 1.15;
+    line-height: 1.5;
     letter-spacing: -0.5px;
 }
 
