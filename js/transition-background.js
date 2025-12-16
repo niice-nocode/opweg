@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (bgColor && themeValue !== prevTheme) {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 25%',
-        end: 'bottom 25%',
+        start: 'top 50%',
+        end: 'bottom 50%',
         onEnter: () => changeBackground(bgColor, themeValue),
         onEnterBack: () => changeBackground(bgColor, themeValue),
         // markers: true
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
       isAnimating = true;
       gsap.to('body', {
         backgroundColor: color,
-        duration: 0.4,
+        duration: 0.3,
         ease: 'power2.out',
         onComplete: () => {
           activeTheme = theme;
