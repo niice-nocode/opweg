@@ -1,24 +1,35 @@
-// GSAP ScrollTrigger - Section Background Color Change with Attributes
+// GSAP ScrollTrigger - Section Background & Text Color Change with Attributes
 gsap.registerPlugin(ScrollTrigger);
 
-// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
   
-  // Map attribute values to CSS variables
-  const colorMap = {
+  // Background color map
+  const bgColorMap = {
     'dark': 'var(--background-color--dark)',
     'light': 'var(--background-color--light)',
+  };
+  
+  // Text color map
+  const textColorMap = {
+    'black': 'var(--text-color--text-primary)',
+    'green': 'var(--base-color-brand--green)',
+    'light': 'var(--text-color--text-secondary)',
   };
   
   let activeTheme = null;
   let isAnimating = false;
 
-  // Find all elements with the background-color-theme attribute
   const sections = document.querySelectorAll('[background-color-theme]');
+  const textElements = document.querySelectorAll('[text-color-on-light]');
   
-  if (sections.length === 0) return;
+  console.log('Sections found:', sections.length);
+  console.log('Text elements found:', textElements.length);
   
-  // Function to get the section currently in viewport center
+  if (sections.length === 0) {
+    console.log('No sections with background-color-theme attribute found');
+    return;
+  }
+  
   function getCurrentSection() {
     const viewportCenter = window.scrollY + (window.innerHeight / 2);
     
@@ -32,66 +43,90 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    // Fallback to first section if at top, last if at bottom
     if (window.scrollY < sections[0].offsetTop) {
       return sections[0];
     }
     return sections[sections.length - 1];
   }
   
-  // Function to check and update background based on current position
-  function checkAndUpdateBackground() {
+  function checkAndUpdateColors() {
     if (isAnimating) return;
     
     const currentSection = getCurrentSection();
     if (currentSection) {
       const currentTheme = currentSection.getAttribute('background-color-theme');
-      const currentColor = colorMap[currentTheme];
+      const currentColor = bgColorMap[currentTheme];
       
       if (currentColor && activeTheme !== currentTheme) {
-        changeBackground(currentColor, currentTheme);
+        changeColors(currentColor, currentTheme);
       }
     }
   }
   
-  // Set initial background color
-  checkAndUpdateBackground();
+  // Set initial colors
+  checkAndUpdateColors();
   
-  // Apply ScrollTrigger to sections where theme changes
   sections.forEach((section, index) => {
     const themeValue = section.getAttribute('background-color-theme');
-    const bgColor = colorMap[themeValue];
+    const bgColor = bgColorMap[themeValue];
     const prevTheme = index > 0 ? sections[index - 1].getAttribute('background-color-theme') : null;
     
     if (bgColor && themeValue !== prevTheme) {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 50%',
-        end: 'bottom 50%',
-        onEnter: () => changeBackground(bgColor, themeValue),
-        onEnterBack: () => changeBackground(bgColor, themeValue),
-        // markers: true
+        start: 'top 25%',
+        end: 'bottom 25%',
+        onEnter: () => changeColors(bgColor, themeValue),
+        onEnterBack: () => changeColors(bgColor, themeValue),
       });
     }
   });
   
-  // Function to change background with GSAP animation
-  function changeBackground(color, theme) {
-    if (activeTheme !== theme) {
-      isAnimating = true;
-      gsap.to('body', {
-        backgroundColor: color,
-        duration: 0.3,
-        ease: 'power2.out',
-        onComplete: () => {
-          activeTheme = theme;
-          isAnimating = false;
-        }
-      });
-    }
+  function changeColors(bgColor, theme) {
+    console.log('changeColors called:', theme, bgColor);
+    console.log('activeTheme:', activeTheme);
+    
+    if (activeTheme === theme) return;
+    
+    isAnimating = true;
+    
+    // Animate background
+    gsap.to('body', {
+      backgroundColor: bgColor,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+    
+    // Animate text elements
+    textElements.forEach(el => {
+      let textColor;
+      
+      if (theme === 'dark') {
+        // Background is dark → tekst wordt altijd light
+        textColor = textColorMap['light'];
+      } else if (theme === 'light') {
+        // Background is light → tekst wordt groen of zwart op basis van attribute
+        const colorKey = el.getAttribute('text-color-on-light');
+        textColor = textColorMap[colorKey];
+      }
+      
+      console.log('Text element:', el, 'Color:', textColor);
+      
+      if (textColor) {
+        gsap.to(el, {
+          color: textColor,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      }
+    });
+    
+    gsap.delayedCall(0.3, () => {
+      activeTheme = theme;
+      isAnimating = false;
+    });
   }
   
-  // Debounce helper
   function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -104,24 +139,21 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   }
   
-  // Listen to scroll events for instant scrolls (like "back to top" buttons)
   let lastScrollY = window.scrollY;
-  const debouncedCheck = debounce(checkAndUpdateBackground, 100);
+  const debouncedCheck = debounce(checkAndUpdateColors, 100);
   
   window.addEventListener('scroll', function() {
     const currentScrollY = window.scrollY;
     const scrollDiff = Math.abs(currentScrollY - lastScrollY);
     
-    // If scroll difference is large (instant scroll), check immediately
     if (scrollDiff > window.innerHeight) {
       ScrollTrigger.refresh();
-      setTimeout(checkAndUpdateBackground, 50);
+      setTimeout(checkAndUpdateColors, 50);
     }
     
     lastScrollY = currentScrollY;
     debouncedCheck();
   });
   
-  // Also check on scroll end
-  ScrollTrigger.addEventListener('scrollEnd', checkAndUpdateBackground);
+  ScrollTrigger.addEventListener('scrollEnd', checkAndUpdateColors);
 });
