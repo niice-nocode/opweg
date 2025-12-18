@@ -7,6 +7,5 @@ import './gsap-heading.js';
 import './scroll-video.js';
 import './tekstlink.js';
 import './hamburger-nav.js';
-import './transition-background.js';
 import './dropdown.js';
 import './buttons.js';
